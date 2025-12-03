@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="hu.bme.ait.kalaapp" />
+                  <option name="mobileSdkAppId" value="1:719771655916:android:86e0773d5cfea5f62fcfc9" />
+                  <option name="projectId" value="kala-bb4a8" />
+                  <option name="projectNumber" value="719771655916" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

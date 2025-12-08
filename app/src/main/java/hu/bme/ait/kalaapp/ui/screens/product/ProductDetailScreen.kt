@@ -231,7 +231,7 @@ fun ProductDetailContent(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = product.description,
+                text = product.bio,
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 lineHeight = MaterialTheme.typography.bodyLarge.lineHeight

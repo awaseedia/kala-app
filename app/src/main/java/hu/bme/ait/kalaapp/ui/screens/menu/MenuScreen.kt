@@ -202,7 +202,7 @@ fun BrandCard(
         Box(modifier = Modifier.fillMaxSize()) {
             // Brand Image
             AsyncImage(
-                model = brand.imageUrl,
+                model = brand.logoUrl,
                 contentDescription = stringResource(R.string.cd_brand_card_image),
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop

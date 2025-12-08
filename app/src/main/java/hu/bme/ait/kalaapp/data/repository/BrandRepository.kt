@@ -3,7 +3,7 @@ package hu.bme.ait.kalaapp.data.repository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObject
 import hu.bme.ait.kalaapp.data.Result
-import  hu.bme.ait.kalaapp.data.model.Brand
+import hu.bme.ait.kalaapp.data.model.Brand
 import kotlinx.coroutines.tasks.await
 
 class BrandRepository {

@@ -226,7 +226,7 @@ fun FeaturedProductSection(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = product.description,
+                    text = product.bio,
                     style = MaterialTheme.typography.bodyMedium,
                     color = androidx.compose.ui.graphics.Color.White.copy(alpha = 0.8f),
                     maxLines = 2,

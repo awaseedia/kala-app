@@ -137,7 +137,7 @@ fun BrandDetailContent(
                 .height(250.dp)
         ) {
             AsyncImage(
-                model = brand.imageUrl,
+                model = brand.logoUrl,
                 contentDescription = stringResource(R.string.cd_brand_image),
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop

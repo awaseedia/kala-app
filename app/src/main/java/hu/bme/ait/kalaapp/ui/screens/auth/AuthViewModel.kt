@@ -1,62 +1,70 @@
 package hu.bme.ait.kalaapp.ui.screens.auth
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.google.firebase.Firebase
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
-import kotlinx.coroutines.tasks.await
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseUser
+import hu.bme.ait.kalaapp.data.Result
+import hu.bme.ait.kalaapp.data.repository.UserRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
-
-sealed interface LoginUiState {
-    object Init: LoginUiState
-    object Loading: LoginUiState
-    object RegisterSuccess: LoginUiState
-    object LoginSuccess: LoginUiState
-    data class Error(val errorMessage: String?): LoginUiState
+sealed class AuthState {
+    object Idle : AuthState()
+    object Loading : AuthState()
+    data class Success(val user: FirebaseUser) : AuthState()
+    data class Error(val message: String) : AuthState()
 }
 
 class AuthViewModel : ViewModel() {
-    var loginUiState: LoginUiState by mutableStateOf(LoginUiState.Init)
+    private val userRepository = UserRepository()
 
-    private var auth: FirebaseAuth = Firebase.auth
+    private val _authState = MutableStateFlow<AuthState>(AuthState.Idle)
+    val authState: StateFlow<AuthState> = _authState.asStateFlow()
 
-    fun registerUser(email: String, password: String) {
-        loginUiState = LoginUiState.Loading
-        try {
-            auth.createUserWithEmailAndPassword(email,password)
-                .addOnSuccessListener {
-                    loginUiState = LoginUiState.RegisterSuccess
+    val currentUser: FirebaseUser?
+        get() = userRepository.currentUser
+
+    fun signIn(email: String, password: String) {
+        viewModelScope.launch {
+            _authState.value = AuthState.Loading
+            when (val result = userRepository.signIn(email, password)) {
+                is Result.Success -> {
+                    _authState.value = AuthState.Success(result.data)
                 }
-                .addOnFailureListener {
-                    loginUiState = LoginUiState.Error(it.localizedMessage)
+                is Result.Error -> {
+                    _authState.value = AuthState.Error(
+                        result.exception.message ?: "Sign in failed"
+                    )
                 }
-
-        } catch (e: Exception) {
-            loginUiState = LoginUiState.Error(e.localizedMessage)
-            e.printStackTrace()
+                is Result.Loading -> {
+                    _authState.value = AuthState.Loading
+                }
+            }
         }
     }
 
-    suspend fun loginUser(email: String, password: String) : AuthResult? {
-        loginUiState = LoginUiState.Loading
-        try {
-            val result = auth.signInWithEmailAndPassword(email,password).await()
-            loginUiState = if (result.user != null) {
-                LoginUiState.LoginSuccess
-            } else {
-                LoginUiState.Error("Login failed")
+    fun signUp(email: String, password: String, displayName: String) {
+        viewModelScope.launch {
+            _authState.value = AuthState.Loading
+            when (val result = userRepository.signUp(email, password, displayName)) {
+                is Result.Success -> {
+                    _authState.value = AuthState.Success(result.data)
+                }
+                is Result.Error -> {
+                    _authState.value = AuthState.Error(
+                        result.exception.message ?: "Sign up failed"
+                    )
+                }
+                is Result.Loading -> {
+                    _authState.value = AuthState.Loading
+                }
             }
-
-            return result
-        } catch (e: Exception) {
-            loginUiState = LoginUiState.Error(e.localizedMessage)
-            e.printStackTrace()
-
-            return null
         }
+    }
+
+    fun resetAuthState() {
+        _authState.value = AuthState.Idle
     }
 }

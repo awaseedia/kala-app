@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "719771655916",
-    "project_id": "kala-bb4a8",
-    "storage_bucket": "kala-bb4a8.firebasestorage.app"
+    "project_number": "471683446580",
+    "project_id": "kala-52dcc",
+    "storage_bucket": "kala-52dcc.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:719771655916:android:86e0773d5cfea5f62fcfc9",
+        "mobilesdk_app_id": "1:471683446580:android:eaf792cccf83d921fe1761",
         "android_client_info": {
           "package_name": "hu.bme.ait.kalaapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDhqQFLFqaYG56Ast8pislopJqHAbUmiu4"
+          "current_key": "AIzaSyDzD4T0wZc5NHeCydzK9IJQWOlMPdLidwQ"
         }
       ],
       "services": {

@@ -413,7 +413,7 @@ fun BrandProductCard(
                 )
 
                 Text(
-                    text = product.category,
+                    text = product.categories.joinToString(", "),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,

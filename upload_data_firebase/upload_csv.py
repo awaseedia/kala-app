@@ -22,7 +22,7 @@ def upload_csv_to_firestore(
     docs = db.collection(collection_name).stream()
     for doc in docs:
         data = doc.to_dict()
-        firestore_key = data.get(unique_key_col.lower())
+        firestore_key = data.get(unique_key_col, '').strip().lower()
         if firestore_key:
             existing_map_data_stored[firestore_key] = doc.id
             
@@ -42,7 +42,7 @@ def upload_csv_to_firestore(
             if row_modifier_func:
                 row = row_modifier_func(row)
 
-            identifier = row.get(unique_key_col, '').strip()
+            identifier = row.get(unique_key_col, '').strip().lower()
             if identifier in existing_map_data_stored:
                 doc_id = existing_map_data_stored[identifier]
                 doc_ref = db.collection(collection_name).document(doc_id)
@@ -51,7 +51,7 @@ def upload_csv_to_firestore(
                 doc_ref = db.collection(collection_name).document()
                 total_new += 1
 
-            batch.set(doc_ref, row, merge=True)
+            batch.set(doc_ref, row, merge=False)
             counter += 1
 
             if counter == 400:
@@ -117,7 +117,7 @@ if __name__ == "__main__":
     upload_csv_to_firestore(
         csv_path='products.csv',
         collection_name='products',
+        list_cols_to_split=['categories'],
         row_modifier_func=process_product_row
     )
     # ---- PRODUCTS ----
-

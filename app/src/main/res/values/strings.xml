@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KalaApp</string>
+    <string name="app_name">KĀLA</string>
 
     <!-- Home Screen -->
     <string name="home_featured">Featured</string>
@@ -15,10 +15,17 @@
     <string name="product_view_details">View Details</string>
 
     <!-- Categories -->
-    <string name="category_casual">Casual</string>
-    <string name="category_evening">Evening</string>
-    <string name="category_abaya">Abaya</string>
+<!--    <string name="category_casual">Casual</string>-->
+<!--    <string name="category_evening">Evening</string>-->
+    <string name="category_abaya">Abayas</string>
     <string name="category_activewear">Activewear</string>
+    <string name="category_tops">Tops</string>
+    <string name="category_swimwear">Swimwear</string>
+    <string name="category_dresses">Dresses</string>
+    <string name="category_skirts">Skirts</string>
+    <string name="category_pants">Pants</string>
+    <string name="category_hijabs">Hijab</string>
+    <string name="category_sets">Sets</string>
     <string name="category_all">All</string>
 
     <!-- Content Descriptions -->

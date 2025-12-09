@@ -47,14 +47,6 @@ fun HomeScreen(
                         style = MaterialTheme.typography.headlineSmall
                     )
                 },
-                actions = {
-                    IconButton(onClick = { /* Navigate to search - handled by bottom nav */ }) {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = stringResource(R.string.cd_search)
-                        )
-                    }
-                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface
                 )
@@ -244,10 +236,15 @@ fun CategoryFilter(
 ) {
     val categories = listOf(
         "All" to R.string.category_all,
-        "casual" to R.string.category_casual,
-        "evening" to R.string.category_evening,
-        "abaya" to R.string.category_abaya,
-        "activewear" to R.string.category_activewear
+        "dresses" to R.string.category_dresses,
+        "abayas" to R.string.category_abaya,
+        "hijabs" to R.string.category_hijabs,
+        "activewear" to R.string.category_activewear,
+        "tops" to R.string.category_tops,
+        "pants" to R.string.category_pants,
+        "skirts" to R.string.category_skirts,
+        "swimwear" to R.string.category_swimwear,
+        "sets" to R.string.category_sets,
     )
 
     Column(modifier = Modifier.padding(horizontal = 16.dp)) {

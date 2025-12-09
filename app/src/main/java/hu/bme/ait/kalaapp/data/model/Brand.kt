@@ -10,6 +10,7 @@ data class Brand(
     val bio: String = "",
     val websiteUrl: String = "",
     val logoUrl: String = "",
+    val imageUrl: String = "",
     val categories: List<String> = emptyList(),
     val values: List<String> = emptyList(),
 )

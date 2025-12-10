@@ -11,7 +11,7 @@ data class Product(
     val bio: String = "",
     val price: Double = 0.0,
     val currency: String = "USD",
-    val category: String = "",
+    val categories: List<String> = emptyList(),
     val imageUrl: String = "",
     val productUrl: String = "",
     val isFeatured: Boolean = false

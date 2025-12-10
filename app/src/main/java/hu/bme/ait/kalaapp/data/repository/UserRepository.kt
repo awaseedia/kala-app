@@ -38,7 +38,6 @@ class UserRepository {
             if (user != null) {
                 // Create user document in Firestore
                 val userDoc = User(
-                    uid = user.uid,
                     email = email,
                     displayName = displayName
                 )

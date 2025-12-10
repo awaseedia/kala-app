@@ -1,7 +1,6 @@
 package hu.bme.ait.kalaapp.data.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.toObject
 import hu.bme.ait.kalaapp.data.Result
 import hu.bme.ait.kalaapp.data.model.Product
@@ -73,10 +72,10 @@ class ProductRepository {
             val allProducts = snapshot.documents.mapNotNull { it.toObject<Product>() }
 
             // Client-side filtering (Firestore doesn't support full-text search well)
-            val filtered = allProducts.filter {
-                it.name.contains(query, ignoreCase = true) ||
-                        it.category.contains(query, ignoreCase = true) ||
-                        it.brandName.contains(query, ignoreCase = true)
+            val filtered = allProducts.filter { product ->
+                product.name.contains(query, ignoreCase = true) ||
+                        product.categories.any { it.contains(query, ignoreCase = true) } ||
+                        product.brandName.contains(query, ignoreCase = true)
             }
 
             Result.Success(filtered)

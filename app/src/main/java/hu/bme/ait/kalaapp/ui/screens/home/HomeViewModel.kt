@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlin.text.lowercase
+import kotlin.text.map
 
 data class HomeUiState(
     val featuredProduct: Product? = null,
@@ -74,7 +76,11 @@ class HomeViewModel : ViewModel() {
         val filtered = if (category == "All") {
             allProducts
         } else {
-            allProducts.filter { it.category.equals(category, ignoreCase = true) }
+            allProducts.filter { product ->
+                product.categories.any {
+                    it.equals(category, ignoreCase = true)
+                }
+            }
         }
 
         _uiState.value = _uiState.value.copy(products = filtered)

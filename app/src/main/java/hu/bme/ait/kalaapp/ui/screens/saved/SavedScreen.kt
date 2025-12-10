@@ -33,6 +33,10 @@ fun SavedScreen(
     val uiState by viewModel.uiState.collectAsState()
     val isRemoving by viewModel.isRemoving.collectAsState()
 
+    LaunchedEffect(Unit) {
+        viewModel.loadSavedProducts()
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(

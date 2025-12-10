@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">KĀLA</string>
 
+
+
     <!-- Home Screen -->
     <string name="home_featured">Featured</string>
     <string name="home_discover">Discover</string>
@@ -15,8 +17,6 @@
     <string name="product_view_details">View Details</string>
 
     <!-- Categories -->
-<!--    <string name="category_casual">Casual</string>-->
-<!--    <string name="category_evening">Evening</string>-->
     <string name="category_abaya">Abayas</string>
     <string name="category_activewear">Activewear</string>
     <string name="category_tops">Tops</string>
@@ -128,4 +128,11 @@
     <string name="menu_all_brands">All Brands</string>
     <string name="menu_brands_count">%d brands</string>
     <string name="menu_explore">Explore</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_menu">Menu</string>
+    <string name="nav_saved">Saved</string>
+    <string name="nav_profile">Profile</string>
 </resources>

@@ -59,6 +59,7 @@ fun MenuScreen(
                         style = MaterialTheme.typography.headlineSmall
                     )
                 },
+
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface
                 )
@@ -180,17 +181,16 @@ fun BrandsList(
         // Header
         item {
             Column {
-                Text(
-                    text = stringResource(R.string.menu_all_brands),
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-
+//                Text(
+//                    text = stringResource(R.string.menu_all_brands),
+//                    style = MaterialTheme.typography.titleLarge,
+//                    color = MaterialTheme.colorScheme.onBackground
+//                )
                 Text(
                     text = stringResource(R.string.menu_brands_count, brands.size),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 4.dp)
+//                    modifier = Modifier.padding(top = 4.dp)
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -295,88 +295,3 @@ fun BrandCard(
         }
     }
 }
-
-// ============================================
-// ALTERNATIVE: Grid Layout Version (Optional)
-// ============================================
-/*
-If you want a 2-column grid instead of a list, use this:
-
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
-
-@Composable
-fun BrandsGrid(
-    brands: List<Brand>,
-    onBrandClick: (String) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        modifier = modifier,
-        contentPadding = PaddingValues(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        items(brands, key = { it.id }) { brand ->
-            BrandGridCard(
-                brand = brand,
-                onClick = { onBrandClick(brand.id) }
-            )
-        }
-    }
-}
-
-@Composable
-fun BrandGridCard(
-    brand: Brand,
-    onClick: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(180.dp)
-            .clickable(onClick = onClick),
-        shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ) {
-        Box(modifier = Modifier.fillMaxSize()) {
-            // Brand Image
-            AsyncImage(
-                model = brand.imageUrl,
-                contentDescription = stringResource(R.string.cd_brand_card_image),
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
-
-            // Gradient overlay
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        brush = androidx.compose.ui.graphics.Brush.verticalGradient(
-                            colors = listOf(
-                                androidx.compose.ui.graphics.Color.Transparent,
-                                androidx.compose.ui.graphics.Color.Black.copy(alpha = 0.7f)
-                            ),
-                            startY = 80f
-                        )
-                    )
-            )
-
-            // Brand Name
-            Text(
-                text = brand.name,
-                style = MaterialTheme.typography.titleMedium,
-                color = androidx.compose.ui.graphics.Color.White,
-                modifier = Modifier
-                    .align(Alignment.BottomStart)
-                    .padding(16.dp),
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-    }
-}
-*/

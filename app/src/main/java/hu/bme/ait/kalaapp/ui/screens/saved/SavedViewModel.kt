@@ -32,7 +32,7 @@ class SavedViewModel : ViewModel() {
         get() = userRepository.currentUser != null
 
     init {
-        loadSavedProducts()
+//        loadSavedProducts()
     }
 
     fun loadSavedProducts() {

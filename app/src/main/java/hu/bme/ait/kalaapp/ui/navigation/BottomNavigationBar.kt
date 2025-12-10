@@ -19,7 +19,9 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import hu.bme.ait.kalaapp.R
 
 data class BottomNavItem(
     val route: String,
@@ -38,31 +40,31 @@ fun BottomNavigationBar(
             route = Screen.Home.route,
             selectedIcon = Icons.Filled.Home,
             unselectedIcon = Icons.Outlined.Home,
-            label = "Home"
+            label = stringResource(R.string.nav_home)
         ),
         BottomNavItem(
             route = Screen.Search.route,
             selectedIcon = Icons.Filled.Search,
             unselectedIcon = Icons.Outlined.Search,
-            label = "Search"
+            label = stringResource(R.string.nav_search)
         ),
         BottomNavItem(
             route = Screen.Menu.route,
             selectedIcon = Icons.Filled.Menu,
             unselectedIcon = Icons.Outlined.Menu,
-            label = "Menu"
+            label = stringResource(R.string.nav_menu)
         ),
         BottomNavItem(
             route = Screen.Saved.route,
             selectedIcon = Icons.Filled.Favorite,
             unselectedIcon = Icons.Outlined.FavoriteBorder,
-            label = "Saved"
+            label = stringResource(R.string.nav_saved)
         ),
         BottomNavItem(
             route = Screen.Profile.route,
             selectedIcon = Icons.Filled.Person,
             unselectedIcon = Icons.Outlined.Person,
-            label = "Profile"
+            label = stringResource(R.string.nav_profile)
         )
     )
 

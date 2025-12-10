@@ -33,6 +33,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -57,6 +58,10 @@ fun SavedScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val isRemoving by viewModel.isRemoving.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.loadSavedProducts()
+    }
 
     Scaffold(
         topBar = {

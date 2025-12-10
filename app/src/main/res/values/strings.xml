@@ -15,7 +15,7 @@
     <string name="product_view_details">View Details</string>
 
     <!-- Categories -->
-    <string name="category_abaya">Abayas</string>
+    <string name="category_abayas">Abayas</string>
     <string name="category_activewear">Activewear</string>
     <string name="category_tops">Tops</string>
     <string name="category_swimwear">Swimwear</string>

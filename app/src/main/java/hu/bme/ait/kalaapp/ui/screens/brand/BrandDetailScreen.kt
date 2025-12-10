@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.OpenInNew
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -56,6 +57,7 @@ import coil.compose.AsyncImage
 import hu.bme.ait.kalaapp.R
 import hu.bme.ait.kalaapp.data.model.Brand
 import hu.bme.ait.kalaapp.data.model.Product
+import androidx.core.net.toUri
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -132,7 +134,8 @@ fun BrandDetailScreen(
                     products = uiState.products,
                     onProductClick = onNavigateToProduct,
                     onVisitWebsite = {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uiState.brand!!.websiteUrl))
+                        val intent = Intent(Intent.ACTION_VIEW,
+                            uiState.brand!!.websiteUrl.toUri())
                         context.startActivity(intent)
                     },
                     modifier = Modifier.padding(paddingValues)
@@ -286,7 +289,7 @@ fun BrandDetailContent(
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Icon(
-                    imageVector = Icons.Default.OpenInNew,
+                    imageVector = Icons.AutoMirrored.Filled.OpenInNew,
                     contentDescription = null,
                     modifier = Modifier.size(20.dp)
                 )
@@ -412,13 +415,20 @@ fun BrandProductCard(
                     overflow = TextOverflow.Ellipsis
                 )
 
-                Text(
-                    text = product.categories.joinToString(", "),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Surface(
+                    shape = RoundedCornerShape(4.dp),
+                    color = MaterialTheme.colorScheme.secondaryContainer
+                ) {
+                    Text(
+                        text = product.categories.joinToString(
+                            stringResource(R.string.category_separator)),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSecondaryContainer,
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                    )
+                }
 
                 Spacer(modifier = Modifier.weight(1f))
 

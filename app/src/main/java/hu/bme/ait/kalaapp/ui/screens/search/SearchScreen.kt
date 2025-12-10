@@ -158,7 +158,9 @@ fun SearchBar(
         placeholder = {
             Text(
                 text = stringResource(R.string.search_hint),
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         },
         leadingIcon = {
@@ -336,7 +338,7 @@ fun SearchResultCard(
                         text = product.name,
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface,
-                        maxLines = 2,
+                        maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
 
@@ -357,7 +359,8 @@ fun SearchResultCard(
                         color = MaterialTheme.colorScheme.secondaryContainer
                     ) {
                         Text(
-                            text = product.categories.joinToString(", "),
+                            text = product.categories.joinToString(
+                                stringResource(R.string.category_separator)),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSecondaryContainer,
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)

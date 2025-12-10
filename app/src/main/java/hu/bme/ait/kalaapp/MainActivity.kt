@@ -26,7 +26,6 @@ class MainActivity : ComponentActivity() {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentRoute = navBackStackEntry?.destination?.route
 
-                // Determine which screens should show the bottom navigation
                 val screensWithBottomNav = listOf(
                     Screen.Home.route,
                     Screen.Search.route,

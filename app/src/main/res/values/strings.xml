@@ -25,6 +25,7 @@
     <string name="category_hijabs">Hijabs</string>
     <string name="category_sets">Sets</string>
     <string name="category_all">All</string>
+    <string name="category_separator">", "</string>
 
     <!-- Content Descriptions -->
     <string name="cd_product_image">Product image</string>
@@ -43,7 +44,7 @@
 
     <!-- Search Screen -->
     <string name="search_title">Search</string>
-    <string name="search_hint">Search products, brands, or categories…</string>
+    <string name="search_hint">Search products, brands, categories</string>
     <string name="search_results">Results</string>
     <string name="search_no_results">No results found</string>
     <string name="search_no_results_desc">Try a different search term</string>
